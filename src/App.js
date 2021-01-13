@@ -1,23 +1,34 @@
-import logo from './logo.svg';
+import React, {useEffect} from "react"
+import Nominations from "./components/Nominations";
+import Search from "./components/Search";
+import Results from "./components/Results"
 import './App.css';
 
-function App() {
+
+
+const App = (props) => {
+  const [search, setSearch] = useState({
+    term: 
+  })
+
+
+  useEffect(() => {
+    fetch("http://www.omdbapi.com/?apikey=8224ebbc&s=rambo&type=movie&page=1")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  });
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Nominations/>
+      <Search/>
+      <Results />
     </div>
   );
 }
