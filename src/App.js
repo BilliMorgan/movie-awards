@@ -3,10 +3,8 @@ import axios from "axios";
 import Nominations from "./components/Nominations";
 import Search from "./components/Search";
 import Results from "./components/Results";
-import Pagination from "react-js-pagination";
-
-// import Paginator from "./components/Paginator"
 import Error from "./components/Error";
+import Banner from "./components/Banner";
 import "./Style.css";
 
 const App = (props) => {
@@ -14,13 +12,13 @@ const App = (props) => {
     term: "",
     results: [],
     loading: false,
-    pages: ""
+    pages: "",
   });
   const [nominees, setNominees] = useState([]);
   const [error, setError] = useState(false);
-  const [activePage, setActivePage] = useState(1)
-  
-// console.log(search)
+  const [activePage, setActivePage] = useState(1);
+
+  // console.log(search)
   const prev = useRef("");
 
   const showError = () => {
@@ -28,6 +26,7 @@ const App = (props) => {
       term: "",
       results: [],
       loading: false,
+      pages: "",
     });
     setError(true);
   };
@@ -43,12 +42,12 @@ const App = (props) => {
 
     axios
       .get(
-        `http://www.omdbapi.com/?apikey=8224ebbc&s=${search.term}&type=movie&page=${+activePage}`
+        `http://www.omdbapi.com/?apikey=8224ebbc&s=${
+          search.term
+        }&type=movie&page=${+activePage}`
       )
       .then((response) => {
         if (response.data.Search) {
-          // console.log(response.data)
-
           let searchResults = [];
           response.data.Search.map((film) =>
             searchResults.push({
@@ -64,14 +63,14 @@ const App = (props) => {
             ...search,
             results: searchResults,
             loading: false,
-            pages: response.data.totalResults
+            pages: response.data.totalResults,
           }));
-
         } else {
           setSearch((search) => ({
             ...search,
             results: [],
             loading: false,
+            pages: "",
           }));
         }
       })
@@ -98,6 +97,11 @@ const App = (props) => {
   let disabledMovieID = [];
   nominees.map((nominee) => disabledMovieID.push(nominee.imdbID));
 
+  const handlePageChange = (pageNumber) => {
+    console.log(`active page is ${pageNumber}`);
+    setActivePage(pageNumber);
+  };
+
   let noBannerDisplay = (
     <>
       <Search
@@ -108,6 +112,9 @@ const App = (props) => {
         <Results
           results={search.results}
           term={search.term}
+          activePage={activePage}
+          pagination={search.pages}
+          pageChange={(pageNumber) => handlePageChange(pageNumber)}
           clicked={(movieId) => addNominee(movieId)}
           disabled={disabledMovieID}
         />
@@ -115,28 +122,23 @@ const App = (props) => {
     </>
   );
 
-  const handlePageChange = (pageNumber) => {
-    console.log(`active page is ${pageNumber}`);
-    setActivePage(pageNumber);
-  };
-
   return (
     <div className="row">
+      <header>
+        <h1>The Shoppies Nominees</h1>
+      </header>
       <Nominations nominated={nominees} clicked={(nom) => removeNominee(nom)} />
-      <Pagination
-        activePage={activePage}
-        itemsCountPerPage={10}
-        totalItemsCount={+search.pages}
-        pageRangeDisplayed={3}
-        onChange={(pageNumber) => handlePageChange(pageNumber)}
-      />
-      {nominees.length < 5 ? noBannerDisplay : "Banner"}
+
+      {nominees.length < 5 ? noBannerDisplay : <Banner />}
 
       {error ? (
         <Error onClose={(event) => setError(false)}>
           Error: Seems that the server is broken
         </Error>
       ) : null}
+      <footer>
+        <p>Copyright &copy; 2021 by Andrii Shymko. All right reserved.</p>
+      </footer>
     </div>
   );
 };

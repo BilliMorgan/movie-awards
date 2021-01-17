@@ -9,7 +9,7 @@ const Error = (props) => {
         <ion-icon
           name="close-circle-outline"
           className="ico-close"
-          setNominees
+          onClick={() => props.onClose()}
         ></ion-icon>
       </div>
     </>

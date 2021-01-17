@@ -9,9 +9,14 @@ const Nominations = (props) => {
       ))
   return (
     <section className="nominations">
-      <h1>Nominations</h1>
-      {nominees.length === 0 ? <h2>Start by searching title to nominate your top 5 movies</h2> : nominatedMovie}
-  
+      {nominees.length === 0 ? (
+        <h2>
+          To find nominees, search your favourite movies and add them to the
+          nominee list.
+        </h2>
+      ) : (
+        nominatedMovie
+      )}
     </section>
   );
 };

@@ -4,7 +4,25 @@
 
 .row {
   max-width: 1140px;
+  min-height: 1450px;
   margin: 0 auto;
+  background-color: #f9f9f9;
+}
+/*------------------------------------------*/
+/* HEADER */
+/*------------------------------------------*/
+header {
+  width: 100%;
+  height: auto;
+  padding: 10px 15px;
+}
+header h1 {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 100;
+  word-spacing: 4px;
+  letter-spacing: 1px;
+  color: #b7a064;
 }
 
 /*------------------------------------------*/
@@ -12,19 +30,41 @@
 /*------------------------------------------*/
 
 .nominations {
+  position: relative;
   width: 100%;
-  min-height: 400px;
-  background-color: rgb(245, 244, 244);
+  min-height: 340px;
+  padding: 0 15px;
   text-align: center;
+  background-color: #efece3;
 }
+.nominations h2 {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  font-size: 160%;
+  word-spacing: 2px;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+  padding: 0 30px;
+  color: #9b9b9b;
+}
+
 .nominated-movie {
   display: inline-block;
   position: relative;
   vertical-align: top;
-  width: 220px;
-  height: 320px;
+  width: 210px;
+  height: 310px;
+  margin-top: 15px;
   margin-right: 10px;
   overflow: hidden;
+  border-bottom: 2px solid #b7a064;
 }
 .nominated-movie:last-of-type {
   margin-right: 0;
@@ -33,16 +73,16 @@
   width: 100%;
   height: auto;
 }
-.no-poster{
-  width: 220px;
-  height: 320px;
-  background-color: #008cba;
+.no-poster {
+  width: 210px;
+  height: 310px;
+  background-color: #a9935d;
 }
-.no-poster p{
-color:black;
+.no-poster p {
+  color: #cecccc;
   font-size: 20px;
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
@@ -57,7 +97,7 @@ color:black;
   width: 100%;
   opacity: 0;
   transition: 0.5s ease;
-  background-color: #008cba;
+  background-color: #b7a064;
 }
 .nominated-movie:hover .overlay {
   opacity: 0.95;
@@ -66,17 +106,35 @@ color:black;
   color: white;
   font-size: 20px;
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
 }
-.remove-btn{
+.remove-btn {
   position: absolute;
   top: 80%;
   left: 50%;
- transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
+  border-left: none;
+  border-right: none;
+  border-top: 2px solid white;
+  border-bottom: 2px solid white;
+  background-color: #b7a064;
+  color: white;
+  padding: 15px 40px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.2s;
+}
+.remove-btn:hover {
+  color: #555;
+}
+.remove-btn:focus {
+  background-color: #b7a064;
 }
 
 /*------------------------------------------*/
@@ -86,21 +144,45 @@ color:black;
   width: 100%;
   height: 70px;
   text-align: left;
-  margin-top: 10px;
+  margin-top: 40px;
+  font-size: 80%;
+  word-spacing: 2px;
 }
 
 .search input {
   display: block;
   float: left;
-  width: 90%;
+  width: 85%;
   padding: 10px 20px;
   font-weight: 300;
   text-decoration: none;
-  font-size: 160%;
+  font-size: 140%;
+  border: none;
+  border-bottom: 2px solid #b7a064;
+  background-color: #f9f9f9;
+  color: #9b9b9b;
+  outline: none;
+  word-spacing: 4px;
+  letter-spacing: 1px;
+  /* text-transform: uppercase; */
+}
+.search input:focus {
+  background-color: #f9f9f9;
 }
 *:focus {
   outline: none;
+  background-color: #f9f9f9;
 }
+.search ion-icon {
+  display: block;
+  float: left;
+  margin-left: 15px;
+  font-size: 285%;
+  /* font-weight: 300; */
+  color: #b7a064;
+  border-bottom: 2px solid #b7a064;
+}
+
 .lds-dual-ring {
   display: block;
   float: left;
@@ -115,8 +197,8 @@ color:black;
   height: 40px;
   margin: 8px;
   border-radius: 50%;
-  border: 6px solid rgb(109, 109, 109);
-  border-color: rgb(109, 109, 109) transparent rgb(109, 109, 109) transparent;
+  border: 6px solid #b7a064;
+  border-color: #b7a064 transparent #b7a064 transparent;
   animation: lds-dual-ring 1.5s linear infinite;
 }
 @keyframes lds-dual-ring {
@@ -136,15 +218,20 @@ color:black;
   height: auto;
   margin-top: 10px;
 }
-
+.results-for {
+  display: block;
+  height: 50px;
+}
 .results h3 {
+  float: left;
   margin-left: 20px;
   margin-bottom: 10px;
 }
 
 .result-movie {
+  display: block;
   width: 100%;
-  height: 40px;
+  height: 70px;
   margin-bottom: 5px;
   padding: 10px 20px;
   background-color: rgb(245, 244, 244);
@@ -160,6 +247,24 @@ color:black;
 }
 .result-movie-btn {
   float: right;
+  border: none;
+  background-color: #b7a064;
+  color: white;
+  padding: 15px 40px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: border 0.2s;
+}
+.result-movie-btn:disabled {
+  background-color: #9b9b9b;
+  color: #dadada;
+  border: none;
+}
+
+.result-movie-btn:enabled:hover {
+  border: 5px solid #b7a064;
 }
 /*------------------------------------------*/
 /* Pagination */
@@ -167,15 +272,43 @@ color:black;
 .pagination {
   float: right;
   list-style: none;
+  margin-right: 15px;
 }
 
 .pagination li {
-display: inline-block;
-
-
+  display: inline-block;
+  margin-right: 8px;
 }
-
-
+.pagination a {
+  text-decoration: none;
+  color: #555;
+  font-size: 90%;
+}
+/*------------------------------------------*/
+/* banner */
+/*------------------------------------------*/
+.banner {
+  width: 100%;
+  height: auto;
+  margin-top: 40px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 100;
+  word-spacing: 4px;
+  letter-spacing: 1px;
+  color: #b7a064;
+}
+/*------------------------------------------*/
+/* FOOTER */
+/*------------------------------------------*/
+footer{
+  position: absolute;
+  top: 1350px;
+  width: 1140px;
+  height: 100px;
+  padding: 15px;
+  background-color: #efece3;
+}
 /*------------------------------------------*/
 /* ERROR MESSAGE */
 /*------------------------------------------*/
@@ -183,10 +316,15 @@ display: inline-block;
   position: relative;
   width: 100%;
   height: 70px;
-  margin-top: 10px;
+  margin-top: 15px;
+  margin-left: 15px;
   color: red;
 }
 .error-message h3 {
   display: inline-block;
-  font-weight: 80;
+  font-weight: 0;
+
+}
+.error-message ion-icon{
+padding-left: 10px;
 }
