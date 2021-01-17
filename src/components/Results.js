@@ -6,7 +6,7 @@ import "../Style.css";
 
 const Results = (props) => {
   let movies = props.results;
-  console.log(props.pagination)
+  // console.log(props.pagination)
   return (
     <section className="results">
       <div className="results-for">

@@ -17,6 +17,7 @@ const App = (props) => {
   const [nominees, setNominees] = useState([]);
   const [error, setError] = useState(false);
   const [activePage, setActivePage] = useState(1);
+  const [closeBanner, setCloseBanner] = useState(false);
 
   // console.log(search)
   const prev = useRef("");
@@ -42,9 +43,7 @@ const App = (props) => {
 
     axios
       .get(
-        `http://www.omdbapi.com/?apikey=8224ebbc&s=${
-          search.term
-        }&type=movie&page=${+activePage}`
+        `http://www.omdbapi.com/?apikey=8224ebbc&s=${search.term}&type=movie&page=${activePage}`
       )
       .then((response) => {
         if (response.data.Search) {
@@ -92,21 +91,28 @@ const App = (props) => {
     setNominees(
       nominees.filter((result) => result.imdbID !== removedNomineeId)
     );
+    setCloseBanner(false);
   };
 
   let disabledMovieID = [];
   nominees.map((nominee) => disabledMovieID.push(nominee.imdbID));
 
   const handlePageChange = (pageNumber) => {
-    console.log(`active page is ${pageNumber}`);
     setActivePage(pageNumber);
   };
 
+  const handleSearch = (input) => {
+    let term = input;
+    setSearch({ ...search, term });
+    if (prev.current !== term) {
+      setActivePage(1);
+    }
+  };
   let noBannerDisplay = (
     <>
       <Search
         loading={search.loading}
-        onSearch={(term) => setSearch({ ...search, term })}
+        onSearch={(term) => handleSearch(term)}
       />
       {search.results.length !== 0 ? (
         <Results
@@ -123,14 +129,21 @@ const App = (props) => {
   );
 
   return (
+    
     <div className="row">
       <header>
         <h1>The Shoppies Nominees</h1>
       </header>
       <Nominations nominated={nominees} clicked={(nom) => removeNominee(nom)} />
-
-      {nominees.length < 5 ? noBannerDisplay : <Banner />}
-
+      {nominees.length < 5 ? (
+        noBannerDisplay
+      ) : closeBanner ? null : (
+        <Banner
+          close={() => setCloseBanner(true)}
+          //banner animation is not finished yet
+          // show={!closeBanner}
+        />
+      )}
       {error ? (
         <Error onClose={(event) => setError(false)}>
           Error: Seems that the server is broken
