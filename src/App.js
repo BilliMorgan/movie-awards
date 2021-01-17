@@ -44,7 +44,7 @@ const App = (props) => {
 
     axios
       .get(
-        `http://www.omdbapi.com/?apikey=${API_KEY}&s=${search.term}&type=movie&page=${activePage}`
+        `https://www.omdbapi.com/?apikey=${API_KEY}&s=${search.term}&type=movie&page=${activePage}`
       )
       .then((response) => {
         if (response.data.Search) {
