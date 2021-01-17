@@ -7,6 +7,7 @@ import Error from "./components/Error";
 import Banner from "./components/Banner";
 import "./Style.css";
 
+
 const App = (props) => {
   const [search, setSearch] = useState({
     term: "",
@@ -19,7 +20,7 @@ const App = (props) => {
   const [activePage, setActivePage] = useState(1);
   const [closeBanner, setCloseBanner] = useState(false);
 
-  // console.log(search)
+
   const prev = useRef("");
 
   const showError = () => {
@@ -31,7 +32,7 @@ const App = (props) => {
     });
     setError(true);
   };
-
+  const API_KEY = process.env.REACT_APP_API_KEY_OMDB;
   useEffect(() => {
     if (prev.current === "" && search.term === "") return;
     setSearch((prev) => ({
@@ -43,7 +44,7 @@ const App = (props) => {
 
     axios
       .get(
-        `http://www.omdbapi.com/?apikey=8224ebbc&s=${search.term}&type=movie&page=${activePage}`
+        `http://www.omdbapi.com/?apikey=${API_KEY}&s=${search.term}&type=movie&page=${activePage}`
       )
       .then((response) => {
         if (response.data.Search) {
@@ -77,7 +78,7 @@ const App = (props) => {
         console.log(`Error message: ${error}`);
         showError();
       });
-  }, [search.term, activePage]);
+  }, [search.term, activePage, API_KEY]);
 
   const addNominee = (nomineeId) => {
     let newNominee = search.results.filter(
