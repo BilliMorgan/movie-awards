@@ -31,7 +31,7 @@ https://shoppies-nominees.netlify.app/
 
 ### To install:
 
-Clone the project and run $npm install
+Clone the project and run $npm install.
 The app is using OMDB API (http://www.omdbapi.com/) and require a KEY. To create a key use API documentation (http://www.omdbapi.com/apikey.aspx).
 Create .env file and add REACT_APP_API_KEY_OMDB=[your_key].
 
