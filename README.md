@@ -28,7 +28,7 @@ After adding 5 movies the app displays banner with information that the nominati
 
 ### To install:
 
-Clone the project and run $npm istall
+Clone the project and run $npm install
 
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/d2b42358-d8fa-4cb5-933f-ba7c2f3d26ef/deploy-status)](https://app.netlify.com/sites/shoppies-nominees/deploys)
