@@ -1,4 +1,3 @@
-https://shoppies-nominees.netlify.app/
 
 # The Shoppies Nominees
 
@@ -7,7 +6,11 @@ https://shoppies-nominees.netlify.app/
 Users can dynamically search for movies by their title. Add and remove the movie to the nominee's list.
 After adding 5 movies the app displays banner with information that the nomination process is complete. 
 
-### Stack
+### Link:
+
+https://shoppies-nominees.netlify.app/
+
+### Stack:
     Javascript
     React
     HTML/CSS
@@ -31,6 +34,8 @@ After adding 5 movies the app displays banner with information that the nominati
 Clone the project and run $npm install
 The app is using OMDB API (http://www.omdbapi.com/) and require a KEY. To create a key use API documentation (http://www.omdbapi.com/apikey.aspx).
 Create .env file and add REACT_APP_API_KEY_OMDB=[your_key].
+
+### Screenshot:
 
 ![index page](./src/screenshots/shoppies.png)
 
