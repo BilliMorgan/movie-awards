@@ -32,7 +32,7 @@ Clone the project and run $npm install
 The app is using OMDB API (http://www.omdbapi.com/) and require a KEY. To create a key use API documentation (http://www.omdbapi.com/apikey.aspx).
 Create .env file and add REACT_APP_API_KEY_OMDB=[your_key].
 
-
+![index page](./src/screenshots/shoppies.png)
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/d2b42358-d8fa-4cb5-933f-ba7c2f3d26ef/deploy-status)](https://app.netlify.com/sites/shoppies-nominees/deploys)
     
