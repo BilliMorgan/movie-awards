@@ -39,5 +39,11 @@ Create .env file and add REACT_APP_API_KEY_OMDB=[your_key].
 
 ![index page](./src/screenshots/shoppies.png)
 
+### Coming up: 
+
+Animation 
+Shareable links
+Testing with Jest/Enzyme
+
 [![Netlify Status](https://api.netlify.com/api/v1/badges/d2b42358-d8fa-4cb5-933f-ba7c2f3d26ef/deploy-status)](https://app.netlify.com/sites/shoppies-nominees/deploys)
     
