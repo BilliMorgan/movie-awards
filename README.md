@@ -3,7 +3,7 @@
 
 ## The React SPA application was built with an aim to fulfill The Shopify intern assignment.
 
-Users can dynamically search for movies by their title. Add and remove the movie to the nominee's list.
+Users can dynamically search for movies by title. Add and remove the movie to the nominee's list.
 After adding 5 movies the app displays banner with information that the nomination process is complete. 
 
 ### Link:
